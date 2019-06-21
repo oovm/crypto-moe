@@ -1,0 +1,11 @@
+# IDE
+.idea/
+*.iml
+
+# Cargo
+Cargo.lock
+
+
+# Build
+/target
+**/*.rs.bk
