@@ -1,4 +1,5 @@
-use crate::auxiliary::{div_rem, CHAR_SET};
+use crate::auxiliary::CHAR_SET;
+use convert_base::Convert;
 use encoding_rs::GB18030;
 use flate2::write::DeflateEncoder;
 use flate2::Compression;
@@ -15,45 +16,14 @@ fn cycle_xor(vec: &mut Vec<u8>) -> Vec<u8> {
     vec.to_owned()
 }
 
-fn cycle_and(vec: &mut Vec<u8>) -> Vec<u8> {
-    let s = rand::thread_rng().gen::<u8>();
-    for i in vec.iter_mut() {
-        *i &= s;
-    }
-    vec.reverse();
-    vec.push(s);
-    vec.to_owned()
-}
-
 fn compress(input: &str) -> Vec<u8> {
     let (cow, _encoding_used, _had_errors) = GB18030.encode(input);
     let mut encoder = DeflateEncoder::new(Vec::new(), Compression::default());
     encoder.write_all(&cow[..]).unwrap();
     let mut compressed = encoder.finish().unwrap();
-    cycle_and(&mut compressed);
+    cycle_xor(&mut compressed);
     cycle_xor(&mut compressed);
     return compressed;
-}
-
-fn div_rem_usize(x: usize, y: usize) -> (usize, usize) {
-    div_rem(x, y)
-}
-
-fn transform(v: Vec<u8>, radix: usize) -> Vec<usize> {
-    let mut s: Vec<usize> = vec![];
-    let mut q: (usize, usize);
-    let mut r: usize = 0;
-    for i in v.iter() {
-        r = r * 256 + *i as usize;
-        if r >= radix {
-            // (q, r) = div_rem_usize(r, radix);
-            q = div_rem_usize(r, radix);
-            r = q.1;
-            s.push(q.0)
-        }
-    }
-    s.push(r);
-    return s;
 }
 
 fn insert_dot(mapped: Vec<char>) -> Vec<char> {
@@ -61,7 +31,7 @@ fn insert_dot(mapped: Vec<char>) -> Vec<char> {
         return mapped;
     }
     let mut result: Vec<char> = vec![];
-    let mut r = rand::thread_rng().gen_range(2, 6);
+    let mut r = rand::thread_rng().gen_range(2, 5 + 1);
     for i in mapped {
         if r > 0 {
             result.push(i);
@@ -75,10 +45,13 @@ fn insert_dot(mapped: Vec<char>) -> Vec<char> {
     return result;
 }
 
-fn char_map(index: Vec<usize>) -> Vec<char> {
+//Todo: Too slow
+fn char_map(index: Vec<u8>) -> Vec<char> {
+    let mut base = Convert::new(256, CHAR_SET.chars().count() as u64);
+    let output = base.convert::<u8, u16>(&index);
     let mut result: Vec<char> = vec![];
-    for i in index.iter() {
-        let c = CHAR_SET.chars().nth(*i).unwrap();
+    for i in output.iter() {
+        let c = CHAR_SET.chars().nth(*i as usize).unwrap();
         result.push(c)
     }
     return result;
@@ -86,8 +59,7 @@ fn char_map(index: Vec<usize>) -> Vec<char> {
 
 pub fn encode(s: &str) -> String {
     let compressed = compress(s);
-    let index = transform(compressed, CHAR_SET.chars().count());
-    let mapped = char_map(index);
+    let mapped = char_map(compressed);
     insert_dot(mapped).iter().collect()
 }
 
@@ -99,11 +71,8 @@ mod tests {
         println!("Raw size: {}", s.len());
         let compressed = compress(s);
         println!("Compressed: {}", compressed.len());
-        println!("        {:?}", compressed);
-        let index = transform(compressed, CHAR_SET.chars().count());
-        println!("Transformed: {}", index.len());
-        println!("        {:?}", index);
-        let mapped = char_map(index);
+        let mapped = char_map(compressed);
+        println!("Transformed: {}", mapped.len());
         println!();
         insert_dot(mapped).iter().collect()
     }
@@ -118,7 +87,7 @@ mod tests {
 
     #[test]
     fn middle() {
-        let input = "苟利国家生死以, 岂因祸福避趋之?";
+        let input = "薇桂·姣千·玲倩燢·琼爱英曦莉馥琴·乐丝琬淑·婉利·茹萍·纯滢毓兰裳寒娜丹·欢翼馥莺芊晗·红伤";
         let r1 = encode_debug(input);
         let r2 = encode_debug(input);
         debug_assert_eq!(r1, r2)
