@@ -1,10 +1,13 @@
 [package]
-name = "marysue"
+name = "crypto-marysue"
 version = "0.1.0"
 authors = ["Aster <galaster@foxmail.com>"]
+description = "Prime lib for Nyar"
 edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+license = "MPL-2.0"
+readme = "README.md"
+repository = "https://github.com/nyar-lang/nyar-prime"
+exclude = ["/tests/*", "/.idea/*"]
 
 [dependencies]
 rand = "0.7.0"
@@ -17,7 +20,7 @@ criterion = "0.2"
 
 [lib]
 crate-type = ["dylib", "rlib"]
-name = "marysue"
+name = "crypto_marysue"
 path = "src/lib.rs"
 
 [[bench]]

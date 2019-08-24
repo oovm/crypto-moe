@@ -1,4 +1,4 @@
-use marysue::{decode, encode};
+use crypto_marysue::{decode, encode};
 
 #[test]
 fn test_encoding() {

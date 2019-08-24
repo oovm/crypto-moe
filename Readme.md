@@ -4,8 +4,8 @@ Marysue™ Encoding
 UTF8 -> GB18030 -> Xor -> Xor -> BaseX
 
 ```rust
-extern crate crypto-marysue;
-use crypto-marysue::{decode, encode};
+extern crate crypto_marysue;
+use crypto_marysue::{decode, encode};
 
 #[test]
 fn test_encoding() {
