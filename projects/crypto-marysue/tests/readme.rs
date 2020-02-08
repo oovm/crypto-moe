@@ -24,7 +24,7 @@ fn test_encoding() {
 #[test]
 #[rustfmt::skip]
 fn test_decoding() {
-    let secret = "晶凌娅萦弥·琉婷·清梅凝琴妙阳嫩音·淑颖宁凌·淑寇盘陌菁城·烟仪贞纱翠·佳素寂洛姬贞·碎墨";
+    let secret = "莺血樱·安倾·沫芝娅澜倩·黎盘如娥凝纨文真·英澜倾倾离·妍墨丹利血枫澪·黎格夏魑璧铃莺·夏";
     let raw = "力微任重久神疲, 再竭衰庸定不支.";
     debug_assert_eq!(decode(secret), raw)
 }

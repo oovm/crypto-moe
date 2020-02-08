@@ -2,6 +2,7 @@ use convert_base::Convert;
 use rand::seq::SliceRandom;
 use std::{collections::HashMap, ops::Index, str};
 
+/// SecretAligned
 #[derive(Debug)]
 pub struct SecretAligned {
     order: u64,
@@ -10,6 +11,7 @@ pub struct SecretAligned {
 }
 
 impl SecretAligned {
+    ///
     pub fn new(codes: &str) -> Self {
         let count = codes.chars().count();
         let order = u64::pow(2, (count as f32).log2().floor() as u32) as usize;

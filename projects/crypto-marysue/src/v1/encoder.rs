@@ -1,10 +1,10 @@
-use crate::auxiliary::DENSE as Secret;
+use crate::auxiliary::DENSE;
 use encoding_rs::GB18030;
 use flate2::{write::DeflateEncoder, Compression};
 use rand::Rng;
 use std::io::Write;
 
-fn cycle_xor(vec: &mut Vec<u8>) -> Vec<u8> {
+pub fn cycle_xor(vec: &mut Vec<u8>) -> Vec<u8> {
     let s = rand::thread_rng().gen::<u8>();
     for i in vec.iter_mut() {
         *i ^= s;
@@ -14,7 +14,7 @@ fn cycle_xor(vec: &mut Vec<u8>) -> Vec<u8> {
     vec.to_owned()
 }
 
-fn compress(input: &str) -> Vec<u8> {
+pub fn compress(input: &str) -> Vec<u8> {
     let (cow, _encoding_used, _had_errors) = GB18030.encode(input);
     let mut encoder = DeflateEncoder::new(Vec::new(), Compression::default());
     encoder.write_all(&cow[..]).unwrap();
@@ -24,7 +24,7 @@ fn compress(input: &str) -> Vec<u8> {
     return compressed;
 }
 
-fn insert_dot(mapped: Vec<char>) -> Vec<char> {
+pub fn insert_dot(mapped: Vec<char>) -> Vec<char> {
     if mapped.len() <= 6 {
         return mapped;
     }
@@ -46,7 +46,7 @@ fn insert_dot(mapped: Vec<char>) -> Vec<char> {
 
 pub fn encode(s: &str) -> String {
     let compressed = compress(s);
-    let mapped = Secret.encode(&compressed);
+    let mapped = DENSE.encode(&compressed);
     insert_dot(mapped).iter().collect()
 }
 
@@ -58,7 +58,7 @@ mod tests {
         println!("Raw size: {}", s.len());
         let compressed = compress(s);
         println!("Compressed: {}", compressed.len());
-        let mapped = Secret.encode(&compressed);
+        let mapped = DENSE.encode(&compressed);
         println!("Transformed: {}", mapped.len());
         println!();
         insert_dot(mapped).iter().collect()

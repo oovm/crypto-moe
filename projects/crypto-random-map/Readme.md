@@ -1,5 +1,5 @@
-Marysue™ Encoding
-=================
+Crypto RandomMap
+================
 
 - Encoding: UTF8 -> GB18030 -> BitXor -> BitXor -> BaseMap
 

@@ -1,9 +1,9 @@
-use crate::auxiliary::DENSE as Secret;
+use crate::auxiliary::DENSE;
 use encoding_rs::GB18030;
 use flate2::write::DeflateDecoder;
 use std::io::Write;
 
-fn cycle_xor(vec: &mut Vec<u8>) -> Vec<u8> {
+pub fn cycle_xor(vec: &mut Vec<u8>) -> Vec<u8> {
     let s = vec.pop().unwrap();
     for i in vec.iter_mut() {
         *i ^= s;
@@ -12,7 +12,7 @@ fn cycle_xor(vec: &mut Vec<u8>) -> Vec<u8> {
     vec.to_owned()
 }
 
-fn decompress<'a>(input: Vec<u8>) -> Result<String, &'static str> {
+pub fn decompress<'a>(input: Vec<u8>) -> Result<String, &'static str> {
     let mut compressed = input;
     cycle_xor(&mut compressed);
     cycle_xor(&mut compressed);
@@ -30,7 +30,7 @@ fn decompress<'a>(input: Vec<u8>) -> Result<String, &'static str> {
 pub fn decode(s: &str) -> String {
     let mut r = s.to_string();
     r.retain(|c| !"·".contains(c));
-    let mapped = Secret.decode(&r);
+    let mapped = DENSE.decode(&r);
     match decompress(mapped) {
         Ok(s) => s,
         Err(_e) => String::new(),

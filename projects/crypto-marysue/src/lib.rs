@@ -5,8 +5,8 @@ extern crate rand;
 extern crate lazy_static;
 
 pub mod auxiliary;
-mod decoder;
-mod encoder;
 
-pub use decoder::decode;
-pub use encoder::encode;
+pub mod v1;
+pub mod v2;
+
+pub use v2::{decode, encode};

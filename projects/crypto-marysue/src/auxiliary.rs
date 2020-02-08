@@ -1,4 +1,3 @@
-use crypto_random_map::{SecretAligned, SecretDense};
 use std::ops::{Div, Rem};
 
 pub fn div_rem<T: Div<Output = T> + Rem<Output = T> + Copy>(x: T, y: T) -> (T, T) {
@@ -7,6 +6,7 @@ pub fn div_rem<T: Div<Output = T> + Rem<Output = T> + Copy>(x: T, y: T) -> (T, T
     (quotient, remainder)
 }
 
+use crypto_random_map::{SecretAligned, SecretDense};
 #[rustfmt::skip]
 pub const CHAR_SET: &str = "\
 丝丹丽之乐云亚仪伊优伤佳依俏倩倾兮兰冰凌凝凡凤凪利千华卿可叶吉君咏哀嘉园城基塔墨夏多奥如妍妖妙妮妲姆\
