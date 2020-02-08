@@ -1,11 +1,5 @@
 use convert_base::Convert;
-use rand::seq::SliceRandom;
-use std::{
-    collections::HashMap,
-    iter::FromIterator,
-    ops::{Index, Rem},
-    str,
-};
+use std::{ops::Index, str};
 
 #[derive(Debug)]
 pub struct SecretDense {
@@ -30,14 +24,16 @@ impl SecretDense {
         base.convert::<u64, u8>(&v.to_vec())
     }
 }
-
+#[allow(unused_variables)]
+#[allow(unreachable_code)]
 impl Index<usize> for SecretDense {
     type Output = Option<char>;
     fn index(&self, index: usize) -> &Self::Output {
         unimplemented!()
     }
 }
-
+#[allow(unused_variables)]
+#[allow(unreachable_code)]
 impl Index<char> for SecretDense {
     type Output = Option<usize>;
     fn index(&self, index: char) -> &Self::Output {

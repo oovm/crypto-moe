@@ -1,3 +1,4 @@
+use crypto_random_map::{SecretAligned, SecretDense};
 use std::ops::{Div, Rem};
 
 pub fn div_rem<T: Div<Output = T> + Rem<Output = T> + Copy>(x: T, y: T) -> (T, T) {
@@ -14,3 +15,8 @@ pub const CHAR_SET: &str = "\
 琴琼瑗瑞瑟瑰瑶瑷璃璎璐璧白百盘眉真碎离秀秋筱米素紫红纨纯纱绯缈美羽翠翼育舒舞艳艺艾芊芝芬花芳芸苏苑英\
 茉茗茜茹荔荷莉莎莲莳莹莺菁菲萌萍萝萦萨落蒂蓉蓓蓝蔷蕊蕴蕾薇薰蝶融血裳语贞迷邪铃银锦阳陌雁雅雨雪霄霜霞\
 霭露青静音韵颖颜风飘香馥馨魂魅魑鸢黎黛";
+
+lazy_static! {
+    pub static ref DENSE: SecretDense = SecretDense::new(CHAR_SET);
+    pub static ref ALIGNED: SecretAligned = SecretAligned::new(CHAR_SET);
+}

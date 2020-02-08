@@ -1,17 +1,18 @@
 use crypto_marysue::{decode, encode};
 
+#[rustfmt::skip]
 pub const TEST_195: &str = "\
-                            i love you 3000 times!i love you 3000 times!i love you 3000 times!\
-                            i love you 3000 times!i love you 3000 times!i love you 3000 times!\
-                            i love you 3000 times!i love you 3000 times!i love you 3000 times!\
-                            i love you 3000 times!i love you 3000 times!i love you 3000 times!\
-                            i love you 3000 times!i love you 3000 times!i love you 3000 times!\
-                            i love you 3000 times!i love you 3000 times!i love you 3000 times!\
-                            i love you 3000 times!i love you 3000 times!i love you 3000 times!\
-                            i love you 3000 times!i love you 3000 times!i love you 3000 times!\
-                            i love you 3000 times!i love you 3000 times!i love you 3000 times!\
-                            i love you 3000 times!i love you 3000 times!i love you 3000 times!\
-                            ";
+i love you 3000 times!i love you 3000 times!i love you 3000 times!\
+i love you 3000 times!i love you 3000 times!i love you 3000 times!\
+i love you 3000 times!i love you 3000 times!i love you 3000 times!\
+i love you 3000 times!i love you 3000 times!i love you 3000 times!\
+i love you 3000 times!i love you 3000 times!i love you 3000 times!\
+i love you 3000 times!i love you 3000 times!i love you 3000 times!\
+i love you 3000 times!i love you 3000 times!i love you 3000 times!\
+i love you 3000 times!i love you 3000 times!i love you 3000 times!\
+i love you 3000 times!i love you 3000 times!i love you 3000 times!\
+i love you 3000 times!i love you 3000 times!i love you 3000 times!\
+";
 
 #[test]
 fn test_encoding() {

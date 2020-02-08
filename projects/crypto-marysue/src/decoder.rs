@@ -1,8 +1,7 @@
-use crate::auxiliary::CHAR_SET;
-use crypto_random_map::SecretDense;
+use crate::auxiliary::DENSE as Secret;
 use encoding_rs::GB18030;
 use flate2::write::DeflateDecoder;
-use std::{io::Write, str::Chars};
+use std::io::Write;
 
 fn cycle_xor(vec: &mut Vec<u8>) -> Vec<u8> {
     let s = vec.pop().unwrap();
@@ -31,8 +30,7 @@ fn decompress<'a>(input: Vec<u8>) -> Result<String, &'static str> {
 pub fn decode(s: &str) -> String {
     let mut r = s.to_string();
     r.retain(|c| !"·".contains(c));
-    let sec = SecretDense::new(CHAR_SET);
-    let mapped = sec.decode(&r);
+    let mapped = Secret.decode(&r);
     match decompress(mapped) {
         Ok(s) => s,
         Err(_e) => String::new(),

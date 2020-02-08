@@ -1,5 +1,5 @@
 use criterion::{black_box, Criterion};
-use marysue::encode;
+use crypto_marysue::encode;
 
 pub const TEST_21: &str = "苟利国家生死以";
 pub const TEST_195: &str = "\

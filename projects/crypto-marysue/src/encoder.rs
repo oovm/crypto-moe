@@ -1,5 +1,4 @@
-use crate::auxiliary::CHAR_SET;
-use crypto_random_map::SecretDense;
+use crate::auxiliary::DENSE as Secret;
 use encoding_rs::GB18030;
 use flate2::{write::DeflateEncoder, Compression};
 use rand::Rng;
@@ -47,8 +46,7 @@ fn insert_dot(mapped: Vec<char>) -> Vec<char> {
 
 pub fn encode(s: &str) -> String {
     let compressed = compress(s);
-    let sec = SecretDense::new(CHAR_SET);
-    let mapped = sec.encode(&compressed);
+    let mapped = Secret.encode(&compressed);
     insert_dot(mapped).iter().collect()
 }
 
@@ -60,8 +58,7 @@ mod tests {
         println!("Raw size: {}", s.len());
         let compressed = compress(s);
         println!("Compressed: {}", compressed.len());
-        let sec = SecretDense::new(CHAR_SET);
-        let mapped = sec.encode(&compressed);
+        let mapped = Secret.encode(&compressed);
         println!("Transformed: {}", mapped.len());
         println!();
         insert_dot(mapped).iter().collect()
