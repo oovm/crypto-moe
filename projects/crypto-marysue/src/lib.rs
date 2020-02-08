@@ -1,4 +1,3 @@
-extern crate convert_base;
 extern crate encoding_rs;
 extern crate flate2;
 extern crate rand;

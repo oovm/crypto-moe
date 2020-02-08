@@ -1,4 +1,4 @@
-use crypto_random_map::aligned::SecretAligned;
+use crypto_random_map::{aligned::SecretAligned, SecretDense};
 use std::{iter::FromIterator, str};
 
 // 50 chars for each line
@@ -14,19 +14,23 @@ pub const CHAR_SET: &str = "\
 #[test]
 fn test_aligned() {
     let o = SecretAligned::new(CHAR_SET);
+    println!("{:#?}", o);
     let t = "苟利国家生死以, 岂因祸福避趋之?".as_bytes();
     let output = o.encode(t);
     println!("{:?}", output);
     let input = o.decode(&String::from_iter(output));
     println!("{:?}", str::from_utf8(&input));
+    assert_eq!(input, t);
 }
 
 #[test]
-fn test_misaligned() {
-    let o = SecretAligned::new(CHAR_SET);
+fn test_dense() {
+    let o = SecretDense::new(CHAR_SET);
+    println!("{:#?}", o);
     let t = "苟利国家生死以, 岂因祸福避趋之?".as_bytes();
     let output = o.encode(t);
     println!("{:?}", output);
     let input = o.decode(&String::from_iter(output));
     println!("{:?}", str::from_utf8(&input));
+    assert_eq!(input, t);
 }

@@ -1,5 +1,5 @@
 use crate::auxiliary::CHAR_SET;
-use convert_base::Convert;
+use crypto_random_map::SecretDense;
 use encoding_rs::GB18030;
 use flate2::{write::DeflateEncoder, Compression};
 use rand::Rng;
@@ -45,21 +45,10 @@ fn insert_dot(mapped: Vec<char>) -> Vec<char> {
     return result;
 }
 
-// Todo: Too slow
-fn char_map(index: Vec<u8>) -> Vec<char> {
-    let mut base = Convert::new(256, CHAR_SET.chars().count() as u64);
-    let output = base.convert::<u8, u16>(&index);
-    let mut result: Vec<char> = vec![];
-    for i in output.iter() {
-        let c = CHAR_SET.chars().nth(*i as usize).unwrap();
-        result.push(c)
-    }
-    return result;
-}
-
 pub fn encode(s: &str) -> String {
     let compressed = compress(s);
-    let mapped = char_map(compressed);
+    let sec = SecretDense::new(CHAR_SET);
+    let mapped = sec.encode(&compressed);
     insert_dot(mapped).iter().collect()
 }
 
@@ -71,7 +60,8 @@ mod tests {
         println!("Raw size: {}", s.len());
         let compressed = compress(s);
         println!("Compressed: {}", compressed.len());
-        let mapped = char_map(compressed);
+        let sec = SecretDense::new(CHAR_SET);
+        let mapped = sec.encode(&compressed);
         println!("Transformed: {}", mapped.len());
         println!();
         insert_dot(mapped).iter().collect()

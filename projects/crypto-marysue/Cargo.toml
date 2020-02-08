@@ -13,7 +13,7 @@ exclude = ["/tests/*", "/.idea/*", "/benches/*"]
 rand = "0.7.0"
 encoding_rs = "0.8.17"
 flate2 = { version = "1.0", features = ["rust_backend"], default-features = false }
-convert-base = "1.0.2"
+crypto-random-map = {path = "../crypto-random-map", version = "0.1.0"}
 
 [dev-dependencies]
 criterion = "0.2"

@@ -1,20 +1,8 @@
 use crate::auxiliary::CHAR_SET;
-use convert_base::Convert;
+use crypto_random_map::SecretDense;
 use encoding_rs::GB18030;
 use flate2::write::DeflateDecoder;
 use std::{io::Write, str::Chars};
-
-// Todo: Too slow
-fn char_map(chars: Chars) -> Vec<u8> {
-    let mut result: Vec<u16> = vec![];
-    for i in chars {
-        let u = CHAR_SET.chars().position(|c| c == i).unwrap();
-        result.push(u as u16)
-    }
-    let mut base = Convert::new(CHAR_SET.chars().count() as u64, 256);
-    let output = base.convert::<u16, u8>(&result);
-    return output;
-}
 
 fn cycle_xor(vec: &mut Vec<u8>) -> Vec<u8> {
     let s = vec.pop().unwrap();
@@ -43,7 +31,8 @@ fn decompress<'a>(input: Vec<u8>) -> Result<String, &'static str> {
 pub fn decode(s: &str) -> String {
     let mut r = s.to_string();
     r.retain(|c| !"·".contains(c));
-    let mapped = char_map(r.chars());
+    let sec = SecretDense::new(CHAR_SET);
+    let mapped = sec.decode(&r);
     match decompress(mapped) {
         Ok(s) => s,
         Err(_e) => String::new(),
