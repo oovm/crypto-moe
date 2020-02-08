@@ -1,8 +1,7 @@
 use crate::auxiliary::CHAR_SET;
 use convert_base::Convert;
 use encoding_rs::GB18030;
-use flate2::write::DeflateEncoder;
-use flate2::Compression;
+use flate2::{write::DeflateEncoder, Compression};
 use rand::Rng;
 use std::io::Write;
 
@@ -36,7 +35,8 @@ fn insert_dot(mapped: Vec<char>) -> Vec<char> {
         if r > 0 {
             result.push(i);
             r -= 1
-        } else {
+        }
+        else {
             result.push('·');
             r = rand::thread_rng().gen_range(1, 8);
             result.push(i);
@@ -45,7 +45,7 @@ fn insert_dot(mapped: Vec<char>) -> Vec<char> {
     return result;
 }
 
-//Todo: Too slow
+// Todo: Too slow
 fn char_map(index: Vec<u8>) -> Vec<char> {
     let mut base = Convert::new(256, CHAR_SET.chars().count() as u64);
     let output = base.convert::<u8, u16>(&index);

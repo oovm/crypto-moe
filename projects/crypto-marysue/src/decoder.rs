@@ -2,10 +2,9 @@ use crate::auxiliary::CHAR_SET;
 use convert_base::Convert;
 use encoding_rs::GB18030;
 use flate2::write::DeflateDecoder;
-use std::io::Write;
-use std::str::Chars;
+use std::{io::Write, str::Chars};
 
-//Todo: Too slow
+// Todo: Too slow
 fn char_map(chars: Chars) -> Vec<u8> {
     let mut result: Vec<u16> = vec![];
     for i in chars {
@@ -33,9 +32,7 @@ fn decompress<'a>(input: Vec<u8>) -> Result<String, &'static str> {
 
     let mut writer = Vec::new();
     let mut deflater = DeflateDecoder::new(writer);
-    deflater
-        .write_all(&compressed[..])
-        .expect("Can not decode the input!");
+    deflater.write_all(&compressed[..]).expect("Can not decode the input!");
     writer = deflater.finish().expect("Decoding unfinished!");
 
     let (cow, _encoding, _had_errors) = GB18030.decode(&writer);
