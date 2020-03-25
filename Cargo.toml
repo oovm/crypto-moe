@@ -2,9 +2,10 @@
 
 members = ["projects/*"]
 default-members = [
+    "projects/crypto-aaencode",
     "projects/crypto-marysue",
     "projects/crypto-random-map",
-    "projects/wasm-marysue",
+    "projects/wasm-crypto-moe",
 ]
 
 [profile.release]
