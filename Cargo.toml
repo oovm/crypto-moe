@@ -4,6 +4,7 @@ members = ["projects/*"]
 default-members = [
     "projects/crypto-aaencode",
     "projects/crypto-marysue",
+    "projects/crypto-invert",
     "projects/crypto-random-map",
     "projects/wasm-crypto-moe",
 ]

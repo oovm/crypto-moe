@@ -1,18 +1,20 @@
 [package]
 publish = false
-name = "crypto-marysue-wasm"
+name = "crypto-moe"
 version = "1.0.0"
 authors = ["Aster <galaster@foxmail.com>"]
 description = "..."
 edition = "2018"
 license = "MPL-2.0"
 readme = "README.md"
-repository = "https://github.com/GalAster/crypto-marysue"
-exclude = ["/tests/*", "/.idea/*", "/benches/*"]
+repository = "https://github.com/GalAster/crypto-moe"
+exclude = ["/tests/*"]
 
 [dependencies]
 wasm-bindgen = "0.2.58"
 crypto-marysue = {path = "../crypto-marysue", version = "0.3.0"}
+crypto-aaencode = {path = "../crypto-aaencode", version = "0.1.0"}
+
 
 [lib]
 crate-type = ["cdylib"]

@@ -1,7 +1,18 @@
 use crate::{
     auxiliary::ALIGNED,
-    v1::encoder::{compress, insert_dot},
+    v1::encoder::{compress, cycle_xor, insert_dot},
 };
+use flate2::{write::DeflateEncoder, Compression};
+use std::io::Write;
+
+fn compresss(input: &str) -> Vec<u8> {
+    let mut encoder = DeflateEncoder::new(Vec::new(), Compression::default());
+    encoder.write_all(input.as_bytes()).unwrap();
+    let mut compressed = encoder.finish().unwrap();
+    cycle_xor(&mut compressed);
+    cycle_xor(&mut compressed);
+    return compressed;
+}
 
 pub fn encode(s: &str) -> String {
     let compressed = compress(s);

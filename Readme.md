@@ -1,7 +1,8 @@
-Marysue™ Encoding
-=================
 
-- Encoding: UTF8 -> GB18030 -> BitXor -> BitXor -> BaseMap
+
+
+
+## Marysue™ Encoding
 
 ```rust
 extern crate crypto_marysue;
@@ -26,3 +27,7 @@ fn test_decoding() {
 There are thousands of possibilities in ciphertext, but there is only one corresponding information.
 
 Notice that the version number used for encryption and decryption **must be the same**, because the key will keep expanding.
+
+
+## AAEncoding
+

@@ -6,7 +6,7 @@ description = "Prime lib for Nyar"
 edition = "2018"
 license = "MPL-2.0"
 readme = "README.md"
-repository = "https://github.com/GalAster/crypto-marysue"
+repository = "https://github.com/GalAster/crypto-moe"
 exclude = ["/tests/*", "/.idea/*", "/benches/*"]
 
 [dependencies]

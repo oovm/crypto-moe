@@ -1,8 +1,8 @@
 [package]
-name = "crypto-random-map"
-version = "0.2.0"
+name = "crypto-aaencode"
+version = "0.1.0"
 authors = ["Aster <galaster@foxmail.com>"]
-description = "..."
+description = "Prime lib for Nyar"
 edition = "2018"
 license = "MPL-2.0"
 readme = "README.md"
@@ -10,5 +10,3 @@ repository = "https://github.com/GalAster/crypto-moe"
 exclude = ["/tests/*", "/.idea/*", "/benches/*"]
 
 [dependencies]
-rand = "0.7.0"
-convert-base = "1.0.2"
