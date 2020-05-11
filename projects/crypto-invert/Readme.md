@@ -1,25 +1,24 @@
 Unicode Invert Text
 ===================
 
-- Encoding: UTF8 -> GB18030 -> BitXor -> BitXor -> BaseMap
-
 ```rust
-extern crate crypto_marysue;
-use crypto_marysue::{decode, encode};
+extern crate crypto_invert;
+use crypto_invert::{decode, encode};
 
 #[test]
 fn test_encoding() {
-    let input = "力微任重久神疲, 再竭衰庸定不支.";
-    let r1 = encode(input);
-    let r2 = encode(input);
-    debug_assert_ne!(r1, r2)
+    let r1 = encode("i love you!");
+    let r2 = encode("I LOVE YOU!");
+    assert_eq!(r1, "ᴉ ꞁoʌǝ ʎon¡");
+    assert_eq!(r2, "I ꞀOɅƎ ⅄O∩¡");
 }
 
 #[test]
 fn test_decoding() {
-    let secret = "晶凌娅萦弥·琉婷·清梅凝琴妙阳嫩音·淑颖宁凌·淑寇盘陌菁城·烟仪贞纱翠·佳素寂洛姬贞·碎墨";
-    let raw = "力微任重久神疲, 再竭衰庸定不支.";
-    debug_assert_eq!(decode(secret), raw)
+    let r1 = "i love you!";
+    let r2 = "I LOVE YOU!";
+    assert_eq!(decode(&encode(r1)), r1);
+    assert_eq!(decode(&encode(r2)), r2);
 }
 ```
 

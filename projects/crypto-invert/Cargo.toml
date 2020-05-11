@@ -2,14 +2,14 @@
 name = "crypto-invert"
 version = "1.0.0"
 authors = ["Aster <galaster@foxmail.com>"]
-description = "Prime lib for Nyar"
+description = "Unicode Upside-Down Mapping"
 edition = "2018"
 license = "MPL-2.0"
-readme = "README.md"
+readme = "Readme.md"
 repository = "https://github.com/GalAster/crypto-moe"
 exclude = ["/tests/*", "/.idea/*", "/benches/*"]
 
 [dependencies]
-
+lazy_static = "1.4"
 
 [dev-dependencies]
