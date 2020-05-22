@@ -1,7 +1,0 @@
-language: rust
-cache: cargo
-matrix:
-  fast_finish: true
-script:
-  - cargo test --release
-  - cargo build --release

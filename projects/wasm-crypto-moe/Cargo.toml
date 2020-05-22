@@ -1,6 +1,6 @@
 [package]
 publish = false
-name = "crypto-moe"
+name = "wasm-crypto-moe"
 version = "1.0.0"
 authors = ["Aster <galaster@foxmail.com>"]
 description = "..."
@@ -14,7 +14,7 @@ exclude = ["/tests/*"]
 wasm-bindgen = "0.2.58"
 crypto-marysue = {path = "../crypto-marysue", version = "0.3.0"}
 crypto-aaencode = {path = "../crypto-aaencode", version = "0.1.0"}
-
+crypto-invert = {path = "../crypto-invert", version = "1.0.0"}
 
 [lib]
 crate-type = ["cdylib"]

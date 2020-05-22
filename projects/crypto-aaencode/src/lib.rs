@@ -1,3 +1,3 @@
 mod utils;
 
-pub use utils::encode;
+pub use utils::{encode,decode};

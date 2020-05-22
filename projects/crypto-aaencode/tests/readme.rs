@@ -1,4 +1,4 @@
-use crypto_marysue::{decode, encode};
+use crypto_aaencode::{decode, encode};
 
 #[rustfmt::skip]
 pub const TEST_195: &str = "\
@@ -14,14 +14,14 @@ i love you 3000 times!i love you 3000 times!i love you 3000 times!\
 i love you 3000 times!i love you 3000 times!i love you 3000 times!\
 ";
 
-#[test]
+
 fn test_encoding() {
     let r1 = encode(TEST_195);
     let r2 = encode(TEST_195);
     debug_assert_eq!(r1, r2)
 }
 
-#[test]
+
 #[rustfmt::skip]
 fn test_decoding() {
     let secret = "莺血樱·安倾·沫芝娅澜倩·黎盘如娥凝纨文真·英澜倾倾离·妍墨丹利血枫澪·黎格夏魑璧铃莺·夏";
@@ -29,7 +29,7 @@ fn test_decoding() {
     debug_assert_eq!(decode(secret), raw)
 }
 
-#[test]
+
 fn test_all() {
     let secret = "力微任重久神疲, 再竭衰庸定不支.";
     let result = decode(&encode(secret));

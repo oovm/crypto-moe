@@ -18,7 +18,7 @@ i love you 3000 times!i love you 3000 times!i love you 3000 times!\
 fn test_encoding() {
     let r1 = encode(TEST_195);
     let r2 = encode(TEST_195);
-    debug_assert_eq!(r1, r2)
+    debug_assert_ne!(r1, r2)
 }
 
 #[test]

@@ -76,6 +76,11 @@ pub fn encode(input: &str) -> String {
     return out;
 }
 
+pub fn decode(input: &str) -> String {
+    unimplemented!()
+}
+
+
 #[test]
 fn test() {
     let out = encode("alert(1)");
