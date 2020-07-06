@@ -14,13 +14,11 @@ i love you 3000 times!i love you 3000 times!i love you 3000 times!\
 i love you 3000 times!i love you 3000 times!i love you 3000 times!\
 ";
 
-
 fn test_encoding() {
     let r1 = encode(TEST_195);
     let r2 = encode(TEST_195);
     debug_assert_eq!(r1, r2)
 }
-
 
 #[rustfmt::skip]
 fn test_decoding() {
@@ -28,7 +26,6 @@ fn test_decoding() {
     let raw = "力微任重久神疲, 再竭衰庸定不支.";
     debug_assert_eq!(decode(secret), raw)
 }
-
 
 fn test_all() {
     let secret = "力微任重久神疲, 再竭衰庸定不支.";

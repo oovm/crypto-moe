@@ -1,5 +1,5 @@
-use crate::{DOT_LINE, LETTER};
 use std::collections::BTreeMap;
+use crate::utils::{LETTER, DOT_LINE};
 
 /// Encodes an ascii string into a morse code representation
 ///

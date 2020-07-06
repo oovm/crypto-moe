@@ -21,7 +21,3 @@ fn test_decoding() {
     assert_eq!(decode(&encode(r2)), r2);
 }
 ```
-
-There are thousands of possibilities in ciphertext, but there is only one corresponding information.
-
-Notice that the version number used for encryption and decryption **must be the same**, because the key will keep expanding.

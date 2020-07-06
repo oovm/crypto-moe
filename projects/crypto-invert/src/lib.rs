@@ -1,2 +1,2 @@
-pub mod auxiliary;
-pub use auxiliary::{decode, encode};
+pub mod utils;
+pub use utils::{decode, encode};

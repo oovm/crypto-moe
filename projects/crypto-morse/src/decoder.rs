@@ -1,16 +1,16 @@
-use crate::{DOT_LINE, LETTER};
 use std::collections::BTreeMap;
+use crate::utils::{DOT_LINE, LETTER};
 
 /// Decodes a morse representation string into an ascii string
 ///
 /// # Examples
-/// ```
+/// ```rust
 /// use morse::decode;
 ///
 /// assert_eq!(decode::decode("... ___ ...").unwrap(), "sos");
 /// ```
-/// # Errors
 ///
+/// # Errors
 /// Decoding will error with a `morse::TranslationError`
 /// when an unsupported morse character is being decoded.
 /// The error structure contains a `Vec<String> unsupported_characters`
@@ -18,7 +18,7 @@ use std::collections::BTreeMap;
 ///
 /// # Notice
 /// SOS HELP      = ...___...  .... . ._.. .__.        => ...___........._...__.
-///  I AM HIS DATE = ..  ._ __  .... .. ...  _.. ._ _ . => ...___........._...__.
+/// I AM HIS DATE = ..  ._ __  .... .. ...  _.. ._ _ . => ...___........._...__.
 pub fn decode(input: &str) -> String {
     let mut result = String::new();
     let mut map = BTreeMap::new();

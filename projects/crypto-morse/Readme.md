@@ -1,28 +1,39 @@
-Marysue™ Encoding
-=================
-
-- Encoding: UTF8 -> GB18030 -> BitXor -> BitXor -> BaseMap
+Unicode Morse Encoding
+======================
 
 ```rust
-extern crate crypto_marysue;
-use crypto_marysue::{decode, encode};
+extern crate crypto_morse;
+use crypto_morse::{decode, encode, encode_raw};
 
 #[test]
 fn test_encoding() {
-    let input = "力微任重久神疲, 再竭衰庸定不支.";
-    let r1 = encode(input);
-    let r2 = encode(input);
-    debug_assert_ne!(r1, r2)
+    assert_eq!(encode("SOS"), encode("sos"));
+    assert_ne!(encode_raw("SOS"), encode("sos"));
 }
 
 #[test]
-fn test_decoding() {
-    let secret = "晶凌娅萦弥·琉婷·清梅凝琴妙阳嫩音·淑颖宁凌·淑寇盘陌菁城·烟仪贞纱翠·佳素寂洛姬贞·碎墨";
-    let raw = "力微任重久神疲, 再竭衰庸定不支.";
-    debug_assert_eq!(decode(secret), raw)
+fn encode_word() {
+    assert_eq!(encode("az"), "._ __..");
+    assert_eq!(encode("AZ"), "._ __..");
+    assert_eq!(encode_raw("AZ"), "_......_ _..__._.");
+}
+
+#[test]
+fn encode_multiple_words() {
+    assert_eq!(encode("中文"), "_..___..__.__._ __.._.___...___");
+    assert_eq!(encode("abc xyz"), "._ _... _._. / _.._ _.__ __..");
+    assert_eq!(encode_raw("A Z"), "_......_ / _..__._.");
+}
+
+#[test]
+fn decode_word() {
+    assert_eq!(decode("._ __.."), "az");
+    assert_eq!(decode("_......_ _..__._."), "AZ");
+}
+
+#[test]
+fn decode_multiple_words() {
+    assert_eq!(decode("_..___..__.__._ __.._.___...___"), "中文");
+    assert_eq!(decode("_......_ / _..__._."), "A Z");
 }
 ```
-
-There are thousands of possibilities in ciphertext, but there is only one corresponding information.
-
-Notice that the version number used for encryption and decryption **must be the same**, because the key will keep expanding.

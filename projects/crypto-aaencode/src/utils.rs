@@ -80,7 +80,6 @@ pub fn decode(input: &str) -> String {
     unimplemented!()
 }
 
-
 #[test]
 fn test() {
     let out = encode("alert(1)");

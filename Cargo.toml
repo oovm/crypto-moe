@@ -7,6 +7,9 @@ default-members = [
     "projects/crypto-invert",
     "projects/crypto-random-map",
 ]
+exclude = [
+    "projects/wasm-vuepress"
+]
 
 [profile.release]
 lto = true

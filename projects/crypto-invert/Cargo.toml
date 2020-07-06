@@ -1,6 +1,6 @@
 [package]
 name = "crypto-invert"
-version = "1.0.0"
+version = "1.0.1"
 authors = ["Aster <galaster@foxmail.com>"]
 description = "Unicode Upside-Down Mapping"
 edition = "2018"
