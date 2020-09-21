@@ -1,4 +1,5 @@
 {
+    "private": true,
     "scripts": {
         "reset": "git reset Head~ --soft",
         "start": "vuepress dev .",
