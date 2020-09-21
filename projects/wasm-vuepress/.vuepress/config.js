@@ -14,8 +14,8 @@ const locale_cn = {
                 title: 'Trivial',
                 collapsable: false,
                 children: [
-                    ['/trivial/', '凯撒密码'],
-                    ['/trivial/morse', 'Morse 密码'],
+                    ['/trivial/caesar', '凯撒密码'],
+                    ['/trivial/morse', '莫斯密码'],
                 ]
             },
         ],
@@ -24,7 +24,6 @@ const locale_cn = {
                 title: 'Bizarre',
                 collapsable: false,
                 children: [
-                    ['/bizarre/', '附录A'],
                     ['/bizarre/marysue', 'Marysue'],
                 ]
             },
