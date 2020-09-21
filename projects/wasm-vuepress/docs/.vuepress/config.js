@@ -1,21 +1,23 @@
 const sidebar = [
-        {
-            title: 'Trivial',
-            collapsable: false,
-            children: [
-                ['/trivial/caesar', '凯撒密码'],
-                ['/trivial/morse', '莫斯密码'],
-            ]
-        },
-        {
-            title: 'Bizarre',
-            collapsable: false,
-            children: [
-                ['/bizarre/brainfuck', 'Brainfuck']
-                ['/bizarre/marysue', 'Marysue'],
-            ]
-        },
-    ]
+    {
+        title: 'Trivial',
+        path: '/trivial/',
+        collapsable: false,
+        children: [
+            ['/trivial/caesar', '凯撒密码'],
+            ['/trivial/morse', '莫斯密码'],
+        ]
+    },
+    {
+        title: 'Bizarre',
+        path: '/bizarre/',
+        collapsable: false,
+        children: [
+            ['/bizarre/brainfuck.md', 'Brainfuck']
+            ['/bizarre/marysue.md', 'Marysue'],
+        ]
+    },
+]
 
 
 
@@ -40,9 +42,7 @@ module.exports = {
         markdown: {
             lineNumbers: true
         },
-        sidebar: {
-            "/": sidebar
-        }
+        sidebar: sidebar
     },
     markdown: {
         config: md => {
