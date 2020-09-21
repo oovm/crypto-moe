@@ -8,7 +8,7 @@ default-members = [
     "projects/crypto-random-map",
 ]
 exclude = [
-
+    "projects/.DS_Store",
 ]
 
 [profile.release]
