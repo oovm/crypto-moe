@@ -1,5 +1,6 @@
+
+```html
 <script type="module">
-    import init, { marysue_encode, marysue_decode } from "https://unpkg.com/wasm-crypto-moe/wasm_crypto_moe.js"
     async function run() {
         await init();
         window.marysue_encode = marysue_encode;
@@ -7,6 +8,7 @@
     }
     run();
 </script>
+```
 
 
 
