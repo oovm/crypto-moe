@@ -4,9 +4,10 @@
         "reset": "git reset Head~ --soft",
         "start": "vuepress dev .",
         "update": "npm update --latest",
-        "test": "npm install && npm start",
-        "build": "vuepress build .",
-        "deploy": "vuepress build ."
+        "install:npm": "npm install",
+        "install:wasm": "cargo install wasm-bindgen-cli --version 0.2.68 --force",
+        "build:wasm": "wasm-pack build --target no-modules && wasm-pack publish",
+        "build:doc": "vuepress build ."
     },
     "dependencies": {
         "vuepress": "^1.5.4",
