@@ -1,28 +1,23 @@
-const locale_cn = {
-    selectText: '选择语言',
-    label: '简体中文',
-    editLinkText: '在 GitHub 上编辑此页',
-    sidebar: {
-        "/": [
-            {
-                title: 'Trivial',
-                collapsable: false,
-                children: [
-                    ['/trivial/caesar', '凯撒密码'],
-                    ['/trivial/morse', '莫斯密码'],
-                ]
-            },
-            {
-                title: 'Bizarre',
-                collapsable: false,
-                children: [
-                    ['bizarre/brainfuck', 'Brainfuck']
-                    ['bizarre/marysue', 'Marysue'],
-                ]
-            },
-        ],
-    }
-}
+const sidebar = [
+        {
+            title: 'Trivial',
+            collapsable: false,
+            children: [
+                ['/trivial/caesar', '凯撒密码'],
+                ['/trivial/morse', '莫斯密码'],
+            ]
+        },
+        {
+            title: 'Bizarre',
+            collapsable: false,
+            children: [
+                ['/bizarre/brainfuck', 'Brainfuck']
+                ['/bizarre/marysue', 'Marysue'],
+            ]
+        },
+    ]
+
+
 
 module.exports = {
     dest: 'docs/.build',
@@ -38,11 +33,16 @@ module.exports = {
     themeConfig: {
         repo: 'GalAster/crypto-moe',
         editLinks: true,
-        docsDir: 'projects/wasm-vuepress',
+        docsDir: 'projects/wasm-vuepress/docs',
+        selectText: '选择语言',
+        label: '简体中文',
+        editLinkText: '在 GitHub 上编辑此页',
         markdown: {
             lineNumbers: true
         },
-        ...locale_cn
+        sidebar: {
+            "/": sidebar
+        }
     },
     markdown: {
         config: md => {
