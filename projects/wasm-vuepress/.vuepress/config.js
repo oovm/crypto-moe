@@ -4,20 +4,16 @@ const locale_cn = {
     editLinkText: '在 GitHub 上编辑此页',
     sidebar: [
         {
-            path: 'trivial',
             title: 'Trivial',
             collapsable: false,
-            sidebarDepth: 1,
             children: [
                 ['trivial/caesar', '凯撒密码'],
                 ['trivial/morse', '莫斯密码'],
             ]
         },
         {
-            path: 'bizarre',
             title: 'Bizarre',
             collapsable: false,
-            sidebarDepth: 1,
             children: [
                 ['bizarre/brainfuck', 'Brainfuck']
                 ['bizarre/marysue', 'Marysue'],
