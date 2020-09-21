@@ -12,3 +12,5 @@ Cargo.lock
 **/*.rs.bk
 node_modules/
 yarn.lock
+
+fmt.*
