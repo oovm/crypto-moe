@@ -50,9 +50,7 @@ module.exports = {
         markdown: {
             lineNumbers: true
         },
-        locales: {
-            '/': locale_cn,
-        },
+        ...locale_cn
     },
     markdown: {
         config: md => {
