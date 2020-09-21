@@ -1,7 +1,7 @@
 ---
 home: true
 actionText: 开始阅读
-actionLink: /trivial/
+actionLink: /trivial/caesar
 footer: CC0 Licensed | Copyright © 2012-2019 Aster™
 ---
 
