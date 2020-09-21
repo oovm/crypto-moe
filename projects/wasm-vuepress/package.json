@@ -10,6 +10,7 @@
         "build:doc": "vuepress build ."
     },
     "dependencies": {
+        "wasm-crypto-moe": "^1.0.0",
         "vuepress": "^1.5.4",
         "@vuepress/plugin-pwa": "^1.5.4",
         "vuepress-plugin-mathjax": "^1.2.8"
