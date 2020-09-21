@@ -35,7 +35,13 @@ const locale_cn = {
 module.exports = {
     dest: 'docs/.build',
     head: [
-        ['link', { rel: 'shortcut icon', type: "image/x-icon", href: './favicon.png' }]
+        ['link', { rel: 'shortcut icon', type: "image/x-icon", href: './favicon.png' }],
+        ['script',
+            {
+                type: '"text/javascript" async',
+                src: 'https://unpkg.com/wasm-crypto-moe/wasm_crypto_moe.js'
+            }
+        ],
     ],
     themeConfig: {
         repo: 'GalAster/crypto-moe',
