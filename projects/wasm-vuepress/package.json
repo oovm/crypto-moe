@@ -1,11 +1,11 @@
 {
     "scripts": {
         "reset": "git reset Head~ --soft",
-        "start": "vuepress dev docs",
+        "start": "vuepress dev .",
         "update": "npm update --latest",
         "test": "npm install && npm start",
-        "build": "vuepress build docs",
-        "deploy": "vuepress build docs"
+        "build": "vuepress build .",
+        "deploy": "vuepress build ."
     },
     "dependencies": {
         "vuepress": "^1.5.4",

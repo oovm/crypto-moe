@@ -14,8 +14,8 @@ const locale_cn = {
                 title: '附录',
                 collapsable: true,
                 children: [
-                    ['', '附录A'],
-                    ['other', '附录B'],
+                    ['/appendix/', '附录A'],
+                    ['/appendix/other', '附录B'],
                 ]
             },
         ]
