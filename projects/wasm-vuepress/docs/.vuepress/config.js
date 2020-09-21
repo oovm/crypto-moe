@@ -13,8 +13,8 @@ const sidebar = [
         path: '/bizarre/',
         collapsable: false,
         children: [
-            ['/bizarre/brainfuck.md', 'Brainfuck']
-            ['/bizarre/marysue.md', 'Marysue'],
+            ['/bizarre/brainfuck', 'Brainfuck'],
+            ['/bizarre/marysue', 'Marysue'],
         ]
     },
 ]
