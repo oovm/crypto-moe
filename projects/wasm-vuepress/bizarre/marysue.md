@@ -1,9 +1,9 @@
 <script type="module">
-    import init, { result, result_tex } from "https://cdn.jsdelivr.net/npm/sm_playground@0.0.5/sm_playground.js"
+    import init, { marysue_encode, marysue_decode } from "https://unpkg.com/wasm-crypto-moe/wasm_crypto_moe.js"
     async function run() {
         await init();
-        window.forward = result;
-        window.forward_tex = result_tex;
+        window.marysue_encode = marysue_encode;
+        window.marysue_decode = marysue_decode;
     }
     run();
 </script>
