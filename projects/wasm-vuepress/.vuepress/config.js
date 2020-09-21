@@ -33,7 +33,7 @@ const locale_cn = {
 }
 
 module.exports = {
-    dest: '.build',
+    dest: 'docs/.build',
     head: [
         ['link', { rel: 'shortcut icon', type: "image/x-icon", href: './favicon.png' }]
     ],
