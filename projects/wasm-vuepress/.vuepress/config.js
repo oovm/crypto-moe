@@ -36,7 +36,7 @@ module.exports = {
     dest: 'docs/.build',
     head: [
         ['link', { rel: 'shortcut icon', type: "image/x-icon", href: './favicon.png' }],
-        ['script', { src: 'https://cdn.jsdelivr.net/npm/wasm-crypto-moe@1.0.0/wasm_crypto_moe.js' }],
+        ['script', { src: 'https://unpkg.com/wasm-crypto-moe/wasm_crypto_moe.js' }],
     ],
     themeConfig: {
         repo: 'GalAster/crypto-moe',
@@ -62,6 +62,9 @@ module.exports = {
             // serviceWorker: true,
             // updatePopup: true,
             popupComponent: 'PWAUpdate',
+            generateSWConfig: {
+                importWorkboxFrom: 'local'
+            }
         }
     }
 };
