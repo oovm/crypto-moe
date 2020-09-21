@@ -12,7 +12,7 @@ const locale_cn = {
         "/trivial/": [
             {
                 title: 'Trivial',
-                collapsable: true,
+                collapsable: false,
                 children: [
                     ['/trivial/', '附录A'],
                     ['/trivial/other', '附录B'],
@@ -22,10 +22,10 @@ const locale_cn = {
         "/bizarre/": [
             {
                 title: 'Bizarre',
-                collapsable: true,
+                collapsable: false,
                 children: [
                     ['/bizarre/', '附录A'],
-                    ['/bizarre/other', '附录B'],
+                    ['/bizarre/marysue', 'Marysue'],
                 ]
             },
         ]
@@ -35,7 +35,8 @@ const locale_cn = {
 module.exports = {
     dest: 'docs/.build',
     head: [
-        ['link', { rel: 'shortcut icon', type: "image/x-icon", href: './favicon.png' }]
+        ['link', { rel: 'shortcut icon', type: "image/x-icon", href: './favicon.png' }],
+        ['script', { src: 'https://cdn.jsdelivr.net/npm/wasm-crypto-moe@1.0.0/wasm_crypto_moe.js' }],
     ],
     themeConfig: {
         repo: 'GalAster/crypto-moe',
