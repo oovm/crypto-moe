@@ -9,13 +9,23 @@ const locale_cn = {
         }
     },
     sidebar: {
-        "/appendix/": [
+        "/trivial/": [
             {
-                title: '附录',
+                title: 'Trivial',
                 collapsable: true,
                 children: [
-                    ['/appendix/', '附录A'],
-                    ['/appendix/other', '附录B'],
+                    ['/trivial/', '附录A'],
+                    ['/trivial/other', '附录B'],
+                ]
+            },
+        ],
+        "/bizarre/": [
+            {
+                title: 'Bizarre',
+                collapsable: true,
+                children: [
+                    ['/bizarre/', '附录A'],
+                    ['/bizarre/other', '附录B'],
                 ]
             },
         ]
