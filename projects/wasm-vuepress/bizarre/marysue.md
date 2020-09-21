@@ -1,4 +1,12 @@
-
+<script type="text/javascript" async
+  src='https://unpkg.com/wasm-crypto-moe/wasm_crypto_moe.js'>
+      async function run() {
+        await init();
+        window.marysue_encode = marysue_encode;
+        window.marysue_decode = marysue_decode;
+    }
+    run();
+</script>
 
 ```html
 <script type="module">

@@ -14,8 +14,8 @@ const locale_cn = {
                 title: 'Trivial',
                 collapsable: false,
                 children: [
-                    ['/trivial/', '附录A'],
-                    ['/trivial/other', '附录B'],
+                    ['/trivial/', '凯撒密码'],
+                    ['/trivial/morse', 'Morse 密码'],
                 ]
             },
         ],
@@ -35,13 +35,7 @@ const locale_cn = {
 module.exports = {
     dest: 'docs/.build',
     head: [
-        ['link', { rel: 'shortcut icon', type: "image/x-icon", href: './favicon.png' }],
-        ['script',
-            {
-                type: '"text/javascript" async',
-                src: 'https://unpkg.com/wasm-crypto-moe/wasm_crypto_moe.js'
-            }
-        ]
+        ['link', { rel: 'shortcut icon', type: "image/x-icon", href: './favicon.png' }]
     ],
     themeConfig: {
         repo: 'GalAster/crypto-moe',
@@ -62,8 +56,8 @@ module.exports = {
             presets: [],
         },
         '@vuepress/pwa': {
-            // serviceWorker: true,
-            // updatePopup: true,
+            serviceWorker: true,
+            updatePopup: true,
             popupComponent: 'PWAUpdate',
             generateSWConfig: {
                 importWorkboxFrom: 'local'
