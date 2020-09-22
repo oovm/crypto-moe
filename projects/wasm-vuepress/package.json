@@ -6,7 +6,7 @@
         "update": "npm update --latest",
         "install:npm": "npm install",
         "install:wasm": "cargo install wasm-bindgen-cli --version 0.2.68 --force",
-        "build:wasm": "RUST_LOG=info wasm-pack build --target no-modules",
+        "build:wasm": "RUST_LOG=info wasm-pack build --target web",
         "build:doc": "vuepress build .",
         "publish": "wasm-pack publish"
     },

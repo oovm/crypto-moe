@@ -28,7 +28,7 @@ module.exports = {
         ['script',
             {
                 type: '"text/javascript" async',
-                src: 'https://unpkg.com/wasm-crypto-moe/wasm_crypto_moe.js',
+                src: 'https://unpkg.com/wasm-crypto-moe@1.0.1/wasm_crypto_moe.js',
                 onload: 'window.wasm_bindgen = wasm_bindgen'
             }
         ],
