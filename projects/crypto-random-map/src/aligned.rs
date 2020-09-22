@@ -1,21 +1,22 @@
+//! doc me
 use convert_base::Convert;
 use rand::seq::SliceRandom;
-use std::{collections::HashMap, ops::Index, str};
+use std::{collections::BTreeMap, ops::Index, str};
 
 /// SecretAligned
 #[derive(Debug)]
 pub struct SecretAligned {
     order: u64,
     set: String,
-    map: HashMap<u64, Vec<char>>,
+    map: BTreeMap<u64, Vec<char>>,
 }
 
 impl SecretAligned {
-    ///
+    /// doc me
     pub fn new(codes: &str) -> Self {
         let count = codes.chars().count();
         let order = u64::pow(2, (count as f32).log2().floor() as u32) as usize;
-        let mut map = HashMap::new();
+        let mut map = BTreeMap::new();
         if order == count {
             for i in 0..order {
                 map.insert(i as u64, vec![codes.chars().nth(i).unwrap()]);
@@ -31,11 +32,13 @@ impl SecretAligned {
         }
         SecretAligned { set: codes.to_string(), order: order as u64, map }
     }
+    /// doc me
     pub fn encode(&self, v: &[u8]) -> Vec<char> {
         let mut base = Convert::new(256, self.order);
         let output = base.convert::<u8, u64>(&v.to_vec());
         self.index_vec(output)
     }
+    /// doc me
     pub fn decode(&self, s: &str) -> Vec<u8> {
         let c = s.chars().collect::<Vec<char>>();
         let v = self.index_str(c);
@@ -74,7 +77,7 @@ impl SecretAligned {
         return v;
     }
     fn index_str(&self, index: Vec<char>) -> Vec<u64> {
-        let mut dict = HashMap::new();
+        let mut dict = BTreeMap::new();
         let mut count = 0;
         for c in self.set.chars() {
             dict.insert(c, count % self.order as usize);

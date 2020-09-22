@@ -1,3 +1,5 @@
+//! doc utils
+
 use lazy_static::lazy_static;
 use std::collections::BTreeMap;
 
@@ -13,10 +15,8 @@ const DIGIT1: &str = "012Ɛᔭ59Ɫ86";
 const PUNCTUATION0: &str = ",.;!?&†()[]{}";
 const PUNCTUATION1: &str = "⸲˙⸵¡¿⅋⸸)(][}{";
 
-// const STRING_NORMAL: &str = concat!(LATIN_LOWER0, LATIN_UPPER0, DIGIT0, PUNCTUATION0);
-// const STRING_INVERT: &str = concat!(LATIN_LOWER1, LATIN_UPPER1, DIGIT1, PUNCTUATION1);
-
 lazy_static! {
+/// const STRING_NORMAL: &str = concat!(LATIN_LOWER0, LATIN_UPPER0, DIGIT0, PUNCTUATION0);
     pub static ref MAP_NORMAL: BTreeMap<char, char> = {
         let normal: String = vec![LATIN_LOWER0, LATIN_UPPER0, DIGIT0, PUNCTUATION0].join("");
         let invert: String = vec![LATIN_LOWER1, LATIN_UPPER1, DIGIT1, PUNCTUATION1].join("");
@@ -26,6 +26,7 @@ lazy_static! {
         }
         return map;
     };
+    /// const STRING_INVERT: &str = concat!(LATIN_LOWER1, LATIN_UPPER1, DIGIT1, PUNCTUATION1);
     pub static ref MAP_INVERT: BTreeMap<char, char> = {
         let normal: String = vec![LATIN_LOWER0, LATIN_UPPER0, DIGIT0, PUNCTUATION0].join("");
         let invert: String = vec![LATIN_LOWER1, LATIN_UPPER1, DIGIT1, PUNCTUATION1].join("");

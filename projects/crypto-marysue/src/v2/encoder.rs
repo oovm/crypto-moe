@@ -1,11 +1,11 @@
 use crate::{
-    auxiliary::ALIGNED,
-    v1::encoder::{compress, cycle_xor, insert_dot},
+    utils::Aligned,
+    v1::encoder::{cycle_xor, insert_dot},
 };
 use flate2::{write::DeflateEncoder, Compression};
 use std::io::Write;
 
-fn compresss(input: &str) -> Vec<u8> {
+fn compress(input: &str) -> Vec<u8> {
     let mut encoder = DeflateEncoder::new(Vec::new(), Compression::default());
     encoder.write_all(input.as_bytes()).unwrap();
     let mut compressed = encoder.finish().unwrap();
@@ -14,9 +14,10 @@ fn compresss(input: &str) -> Vec<u8> {
     return compressed;
 }
 
+/// doc me
 pub fn encode(s: &str) -> String {
     let compressed = compress(s);
-    let mapped = ALIGNED.encode(&compressed);
+    let mapped = Aligned.encode(&compressed);
     insert_dot(mapped).iter().collect()
 }
 
@@ -28,7 +29,7 @@ mod tests {
         println!("Raw size: {}", s.len());
         let compressed = compress(s);
         println!("Compressed: {}", compressed.len());
-        let mapped = ALIGNED.encode(&compressed);
+        let mapped = Aligned.encode(&compressed);
         println!("Transformed: {}", mapped.len());
         println!();
         insert_dot(mapped).iter().collect()
@@ -39,7 +40,7 @@ mod tests {
         let input = "0";
         let r1 = encode_debug(input);
         let r2 = encode_debug(input);
-        debug_assert_ne!(r1, r2)
+        assert_ne!(r1, r2)
     }
 
     #[test]
@@ -47,6 +48,7 @@ mod tests {
         let input = "苟利国家生死以, 岂因祸福避趋之?";
         let r1 = encode_debug(input);
         let r2 = encode_debug(input);
-        debug_assert_ne!(r1, r2)
+        println!("{}\n{}", r1, r2);
+        assert_ne!(r1, r2)
     }
 }

@@ -1,7 +1,6 @@
-/*!
-This crate provides a library for encoding and decoding morse code
-This crate's documentation provides some simple examples on how to use it.
-*/
+#![deny(missing_docs)]
+
+//! doc me
 
 mod decoder;
 mod encoder;

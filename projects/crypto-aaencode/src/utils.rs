@@ -43,36 +43,32 @@ const AA: [&str; 16] = [
 
 pub fn encode(input: &str) -> String {
     let mut out = HEAD.join("");
-    /*
-            for (int i = 0; i < text.length(); i++) {
-            int n = text.charAt(i);
-            StringBuilder t = new StringBuilder("(ﾟДﾟ)[ﾟεﾟ]+");
-            if (n <= 127) {
-                char[] chars = Integer.toOctalString(n).toCharArray();
-                for (char c : chars) t.append(b[Integer.parseInt(String.valueOf(c))]).append("+ ");
-            } else {
-                String hexString = "000" + Integer.toHexString(n);
-                char[] chars = hexString.substring(hexString.length() - 4).toCharArray();
-                t.append("(oﾟｰﾟo)+ ");
-                for (char c : chars) t.append(b[Integer.parseUnsignedInt(String.valueOf(c), 16)]).append("+ ");
-            }
-            r.append(t);
-        }
-        r.append("(ﾟДﾟ)[ﾟoﾟ]) (ﾟΘﾟ)) ('_');");
-
-
-    */
-    /*
-    for n in input.as_bytes() {
-        out.push_str("(ﾟДﾟ)[ﾟεﾟ]+");
-        if *n < 128 {
-            let c = format!("{}", n).as_bytes();
-        }
-        else {
-            let hex = format!("000{x}", n);
-        }
-    }
-    */
+    // for (int i = 0; i < text.length(); i++) {
+    // int n = text.charAt(i);
+    // StringBuilder t = new StringBuilder("(ﾟДﾟ)[ﾟεﾟ]+");
+    // if (n <= 127) {
+    // char[] chars = Integer.toOctalString(n).toCharArray();
+    // for (char c : chars) t.append(b[Integer.parseInt(String.valueOf(c))]).append("+ ");
+    // } else {
+    // String hexString = "000" + Integer.toHexString(n);
+    // char[] chars = hexString.substring(hexString.length() - 4).toCharArray();
+    // t.append("(oﾟｰﾟo)+ ");
+    // for (char c : chars) t.append(b[Integer.parseUnsignedInt(String.valueOf(c), 16)]).append("+ ");
+    // }
+    // r.append(t);
+    // }
+    // r.append("(ﾟДﾟ)[ﾟoﾟ]) (ﾟΘﾟ)) ('_');");
+    //
+    //
+    // for n in input.as_bytes() {
+    // out.push_str("(ﾟДﾟ)[ﾟεﾟ]+");
+    // if *n < 128 {
+    // let c = format!("{}", n).as_bytes();
+    // }
+    // else {
+    // let hex = format!("000{x}", n);
+    // }
+    // }
     return out;
 }
 

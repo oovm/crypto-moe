@@ -1,12 +1,16 @@
+//! doc me
+use crypto_random_map::{SecretAligned, SecretDense};
+use lazy_static::lazy_static;
 use std::ops::{Div, Rem};
 
+/// doc me
 pub fn div_rem<T: Div<Output = T> + Rem<Output = T> + Copy>(x: T, y: T) -> (T, T) {
     let quotient = x / y;
     let remainder = x % y;
     (quotient, remainder)
 }
 
-use crypto_random_map::{SecretAligned, SecretDense};
+/// doc me
 #[rustfmt::skip]
 pub const CHAR_SET: &str = "\
 丝丹丽之乐云亚仪伊优伤佳依俏倩倾兮兰冰凌凝凡凤凪利千华卿可叶吉君咏哀嘉园城基塔墨夏多奥如妍妖妙妮妲姆\
@@ -17,6 +21,8 @@ pub const CHAR_SET: &str = "\
 霭露青静音韵颖颜风飘香馥馨魂魅魑鸢黎黛";
 
 lazy_static! {
-    pub static ref DENSE: SecretDense = SecretDense::new(CHAR_SET);
-    pub static ref ALIGNED: SecretAligned = SecretAligned::new(CHAR_SET);
+/// doc me
+    pub static ref Dense: SecretDense = SecretDense::new(CHAR_SET);
+    /// doc me
+    pub static ref Aligned: SecretAligned = SecretAligned::new(CHAR_SET);
 }

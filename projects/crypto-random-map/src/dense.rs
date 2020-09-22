@@ -1,6 +1,8 @@
+//! doc me
 use convert_base::Convert;
 use std::{ops::Index, str};
 
+/// doc me
 #[derive(Debug)]
 pub struct SecretDense {
     order: u64,
@@ -8,15 +10,18 @@ pub struct SecretDense {
 }
 
 impl SecretDense {
+    /// doc me
     pub fn new(codes: &str) -> Self {
         let order = codes.chars().count() as u64;
         SecretDense { set: codes.to_string(), order }
     }
+    /// doc me
     pub fn encode(&self, v: &[u8]) -> Vec<char> {
         let mut base = Convert::new(256, self.order);
         let output = base.convert::<u8, u64>(&v.to_vec());
         self.index_vec(output)
     }
+    /// doc me
     pub fn decode(&self, s: &str) -> Vec<u8> {
         let c = s.chars().collect::<Vec<char>>();
         let v = self.index_str(c);

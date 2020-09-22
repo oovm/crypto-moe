@@ -1,5 +1,6 @@
-extern crate convert_base;
-extern crate rand;
+#![deny(missing_docs)]
+
+//! doc me
 
 pub mod aligned;
 pub mod dense;

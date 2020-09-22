@@ -10,5 +10,5 @@ repository = "https://github.com/GalAster/crypto-moe"
 exclude = ["/tests/*", "/.idea/*", "/benches/*"]
 
 [dependencies]
-rand = "0.7.0"
-convert-base = "1.0.2"
+rand = "0.7"
+convert-base = "1.0"

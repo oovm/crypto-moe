@@ -1,5 +1,5 @@
+use crate::utils::{DOT_LINE, LETTER};
 use std::collections::BTreeMap;
-use crate::utils::{LETTER, DOT_LINE};
 
 /// Encodes an ascii string into a morse code representation
 ///
@@ -28,7 +28,7 @@ pub fn encode_raw(input: &str) -> String {
         map.insert(*k, v);
     }
     for c in input.chars() {
-        //if c.is_whitespace() {result.pop();result.push('/');continue;}
+        // if c.is_whitespace() {result.pop();result.push('/');continue;}
         let s = match map.get(&c) {
             Some(o) => String::from(**o),
             None => encode_missing(c),

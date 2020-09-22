@@ -1,10 +1,9 @@
-extern crate encoding_rs;
-extern crate flate2;
-extern crate rand;
-#[macro_use]
-extern crate lazy_static;
+#![deny(missing_docs)]
 
-pub mod auxiliary;
+//! doc me
+
+#[allow(non_upper_case_globals)]
+pub mod utils;
 
 pub mod v1;
 pub mod v2;

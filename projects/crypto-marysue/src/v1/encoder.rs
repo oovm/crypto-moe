@@ -1,4 +1,4 @@
-use crate::auxiliary::DENSE;
+use crate::utils::Dense;
 use encoding_rs::GB18030;
 use flate2::{write::DeflateEncoder, Compression};
 use rand::Rng;
@@ -15,7 +15,7 @@ pub fn cycle_xor(vec: &mut Vec<u8>) -> Vec<u8> {
 }
 
 pub fn compress(input: &str) -> Vec<u8> {
-    let (cow, _encoding_used, _had_errors) = GB18030.encode(input);
+    let (cow, _, _) = GB18030.encode(input);
     let mut encoder = DeflateEncoder::new(Vec::new(), Compression::default());
     encoder.write_all(&cow[..]).unwrap();
     let mut compressed = encoder.finish().unwrap();
@@ -44,9 +44,10 @@ pub fn insert_dot(mapped: Vec<char>) -> Vec<char> {
     return result;
 }
 
+/// doc me
 pub fn encode(s: &str) -> String {
     let compressed = compress(s);
-    let mapped = DENSE.encode(&compressed);
+    let mapped = Dense.encode(&compressed);
     insert_dot(mapped).iter().collect()
 }
 
@@ -58,7 +59,7 @@ mod tests {
         println!("Raw size: {}", s.len());
         let compressed = compress(s);
         println!("Compressed: {}", compressed.len());
-        let mapped = DENSE.encode(&compressed);
+        let mapped = Dense.encode(&compressed);
         println!("Transformed: {}", mapped.len());
         println!();
         insert_dot(mapped).iter().collect()
@@ -77,6 +78,7 @@ mod tests {
         let input = "苟利国家生死以, 岂因祸福避趋之?";
         let r1 = encode_debug(input);
         let r2 = encode_debug(input);
+        // println!("{}\n{}", r1, r2);
         debug_assert_ne!(r1, r2)
     }
 }

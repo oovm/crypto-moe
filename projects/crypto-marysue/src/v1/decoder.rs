@@ -1,4 +1,5 @@
-use crate::auxiliary::DENSE;
+//! doc me
+use crate::utils::Dense;
 use encoding_rs::GB18030;
 use flate2::write::DeflateDecoder;
 use std::io::Write;
@@ -12,28 +13,32 @@ pub fn cycle_xor(vec: &mut Vec<u8>) -> Vec<u8> {
     vec.to_owned()
 }
 
-pub fn decompress<'a>(input: Vec<u8>) -> Result<String, &'static str> {
+pub fn decompress<'a>(input: Vec<u8>) -> Result<String, String> {
     let mut compressed = input;
     cycle_xor(&mut compressed);
     cycle_xor(&mut compressed);
 
     let mut writer = Vec::new();
     let mut deflater = DeflateDecoder::new(writer);
-    deflater.write_all(&compressed[..]).expect("Can not decode the input!");
-    writer = deflater.finish().expect("Decoding unfinished!");
-
-    let (cow, _encoding, _had_errors) = GB18030.decode(&writer);
-    let s = &cow[..];
-    Ok(s.to_owned())
+    if let Err(e) = deflater.write_all(&compressed[..]) {
+        return Err(e.to_string());
+    }
+    writer = match deflater.finish() {
+        Ok(o) => o,
+        Err(e) => return Err(e.to_string()),
+    };
+    let (cow, _, _) = GB18030.decode(&writer);
+    Ok(String::from(cow))
 }
 
+/// doc me
 pub fn decode(s: &str) -> String {
     let mut r = s.to_string();
     r.retain(|c| !"·".contains(c));
-    let mapped = DENSE.decode(&r);
+    let mapped = Dense.decode(&r);
     match decompress(mapped) {
         Ok(s) => s,
-        Err(_e) => String::new(),
+        Err(e) => e,
     }
 }
 
