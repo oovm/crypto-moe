@@ -38,10 +38,6 @@ module.exports = {
         },
         sidebar: sidebar
     },
-    markdown: {
-        config: md => {
-        }
-    },
     chainWebpack: (config, isServer) => {
         config.module
             .rule('wasm')
@@ -51,10 +47,6 @@ module.exports = {
             .end()
     },
     plugins: {
-        mathjax: {
-            target: 'chtml',
-            presets: [],
-        },
         '@vuepress/pwa': {
             serviceWorker: true,
             updatePopup: true,
