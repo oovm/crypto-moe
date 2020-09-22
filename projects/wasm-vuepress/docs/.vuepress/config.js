@@ -29,7 +29,7 @@ module.exports = {
             {
                 type: '"text/javascript" async',
                 src: 'https://unpkg.com/wasm-crypto-moe/wasm_crypto_moe.js',
-                onload: 'init()'
+                onload: 'window.wasm_bindgen = wasm_bindgen'
             }
         ],
     ],
