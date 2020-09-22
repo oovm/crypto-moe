@@ -42,6 +42,14 @@ module.exports = {
         config: md => {
         }
     },
+    chainWebpack: (config, isServer) => {
+        config.module
+            .rule('wasm')
+            .test(/\.wasm$/)
+            .use('wasm-loader')
+            .loader('wasm-loader')
+            .end()
+    },
     plugins: {
         mathjax: {
             target: 'chtml',
@@ -57,3 +65,6 @@ module.exports = {
         }
     }
 };
+
+
+

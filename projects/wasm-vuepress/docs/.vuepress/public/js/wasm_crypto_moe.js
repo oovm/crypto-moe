@@ -174,7 +174,7 @@ async function load(module, imports) {
 
 async function init(input) {
     if (typeof input === 'undefined') {
-        input = import.meta.url.replace(/\.js$/, '_bg.wasm');
+        input = 'https://unpkg.com/wasm-crypto-moe/wasm_crypto_moe_bg.wasm';
     }
     const imports = {};
 
