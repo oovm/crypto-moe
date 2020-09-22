@@ -24,13 +24,7 @@ const sidebar = [
 module.exports = {
     dest: 'docs/.build',
     head: [
-        ['link', { rel: 'shortcut icon', type: "image/x-icon", href: './favicon.png' }],
-        ['script',
-            {
-                type: '"text/javascript" async',
-                src: 'https://unpkg.com/wasm-crypto-moe/wasm_crypto_moe.js'
-            }
-        ],
+        ['link', { rel: 'shortcut icon', type: "image/x-icon", href: 'favicon.png' }],
     ],
     themeConfig: {
         repo: 'GalAster/crypto-moe',
@@ -48,6 +42,14 @@ module.exports = {
         config: md => {
         }
     },
+    chainWebpack: (config, isServer) => {
+        config.module
+            .rule('wasm')
+            .test(/\.wasm$/)
+            .use('wasm-loader')
+            .loader('wasm-loader')
+            .end()
+    },
     plugins: {
         mathjax: {
             target: 'chtml',
@@ -63,3 +65,6 @@ module.exports = {
         }
     }
 };
+
+
+
