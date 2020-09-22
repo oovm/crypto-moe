@@ -1,13 +1,4 @@
-```js
-import init, { result, result_tex } from "https://cdn.jsdelivr.net/npm/sm_playground@0.0.3/sm_playground.js"
-async function run() {
-    await init();
-    window.forward = result;
-    window.forward_tex = result_tex;
-}
-run();
-```
-
+```html
 <script type="module">
     import init, { marysue_encode, marysue_decode } from 'wasm-crypto-moe'
     async function run() {
@@ -17,6 +8,8 @@ run();
     }
     run();
 </script>
+```
+
 
 这是一个示例界面
 
