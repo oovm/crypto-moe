@@ -1,4 +1,4 @@
-::: v-pre
+```html
 <script type="module">
     import init, { marysue_encode, marysue_decode } from '/assets/js/wasm-crypto-moe'
     async function run() {
@@ -8,7 +8,7 @@
     }
     run();
 </script>
-:::
+```
 
 
 这是一个示例界面
