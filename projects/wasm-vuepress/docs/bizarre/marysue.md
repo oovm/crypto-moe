@@ -11,7 +11,7 @@
 ```
 
 <script type="module">
-    import init, { marysue_encode, marysue_decode } from 'js/wasm-crypto-moe'
+    import init, { marysue_encode, marysue_decode } from '/assets/js/wasm-crypto-moe'
     async function run() {
         await init("https://unpkg.com/wasm-crypto-moe/wasm_crypto_moe_bg.wasm");
         window.marysue_encode = marysue_encode;

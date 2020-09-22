@@ -25,13 +25,6 @@ module.exports = {
     dest: 'docs/.build',
     head: [
         ['link', { rel: 'shortcut icon', type: "image/x-icon", href: 'favicon.png' }],
-        ['script',
-            {
-                type: '"text/javascript" async',
-                src: 'https://unpkg.com/wasm-crypto-moe@1.0.1/wasm_crypto_moe.js',
-                onload: 'window.wasm_bindgen = wasm_bindgen'
-            }
-        ],
     ],
     themeConfig: {
         repo: 'GalAster/crypto-moe',
