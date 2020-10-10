@@ -1,0 +1,13 @@
+[package]
+name = "crypto-brainfuck"
+version = "0.2.0"
+authors = ["Aster <galaster@foxmail.com>"]
+description = "Encoding strings to brainfuck"
+edition = "2018"
+license = "MPL-2.0"
+readme = "README.md"
+repository = "https://github.com/GalAster/crypto-moe"
+exclude = ["/tests/*", "/.idea/*", "/benches/*"]
+
+[dependencies]
+shortest-brainfuck = "0.2"
